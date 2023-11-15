@@ -40,9 +40,11 @@ public class Main {
 
     private static void StartGame() {
         Scanner scanner = new Scanner(System.in);
+        
+        int round = 0;
 
         System.out.print("\033[2J\033[;H");
-        System.out.println("                  __");
+        /* System.out.println("                  __");
         System.out.println("                 /  \\");
         System.out.println("           .-.  |    |");
         System.out.println("   *    _.-'  \\  \\__/");
@@ -51,46 +53,45 @@ public class Main {
         System.out.println("  |      _  /\" \"");
         System.out.println("  |     /_\'");
         System.out.println("   \\    \\_/");
-        System.out.println("    \" \"\" \"\" \"\" \"");
+        System.out.println("    \" \"\" \"\" \"\" \""); */
 
         do {
-            System.out.println("------NEXT ROUND------x");
-            System.out.println("Player, it's your turn");
-            System.out.println("Enter coordinates for your shot :");
+            System.out.println("------NEXT ROUND------");
+            System.out.println(colorize("Player, it's your turn. Enter coordinates for your shot:", YELLOW_TEXT()));
             Position position = parsePosition(scanner.next());
-            boolean isHit = GameController.checkIsHit(enemyFleet, position);
+            boolean isHit = GameController.checkIsHit(enemyFleet, position);            
             if (isHit) {
                 beep();
 
-                System.out.println("                \\         .  ./");
+                /* System.out.println("                \\         .  ./");
                 System.out.println("              \\      .:\" \";'.:..\" \"   /");
                 System.out.println("                  (M^^.^~~:.'\" \").");
                 System.out.println("            -   (/  .    . . \\ \\)  -");
                 System.out.println("               ((| :. ~ ^  :. .|))");
                 System.out.println("            -   (\\- |  \\ /  |  /)  -");
                 System.out.println("                 -\\  \\     /  /-");
-                System.out.println("                   \\  \\   /  /");
+                System.out.println("                   \\  \\   /  /"); */
             }
 
-            System.out.println(isHit ? "Yeah ! Nice hit !" : "Miss");
+            System.out.println(isHit ? colorize("Yeah ! Nice hit !",RED_TEXT()) : colorize("Miss",BLUE_TEXT()));
             telemetry.trackEvent("Player_ShootPosition", "Position", position.toString(), "IsHit", Boolean.valueOf(isHit).toString());
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
             System.out.println("");
-            System.out.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            System.out.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? colorize("hit your ship !",RED_TEXT()) : colorize("miss",BLUE_TEXT())));
             telemetry.trackEvent("Computer_ShootPosition", "Position", position.toString(), "IsHit", Boolean.valueOf(isHit).toString());
             if (isHit) {
                 beep();
 
-                System.out.println("                \\         .  ./");
+                /* System.out.println("                \\         .  ./");
                 System.out.println("              \\      .:\" \";'.:..\" \"   /");
                 System.out.println("                  (M^^.^~~:.'\" \").");
                 System.out.println("            -   (/  .    . . \\ \\)  -");
                 System.out.println("               ((| :. ~ ^  :. .|))");
                 System.out.println("            -   (\\- |  \\ /  |  /)  -");
                 System.out.println("                 -\\  \\     /  /-");
-                System.out.println("                   \\  \\   /  /");
+                System.out.println("                   \\  \\   /  /"); */
 
             }
         } while (true);
