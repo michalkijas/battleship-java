@@ -59,17 +59,17 @@ public class Main {
 
         do {
             round++;
-            System.out.println(String.format("==================="));
-            System.out.println(String.format("      ROUND %s     ",round));
-            System.out.println(String.format("+--------+--------+"));
-            System.out.println(String.format("| player |computer|"));
-            System.out.println(String.format("+--------+--------+"));  
-            System.out.println(String.format("|ABCDEFGH|ABCDEFGH|"));          
+            System.out.println(String.format("======================="));
+            System.out.println(String.format("         ROUND %s      ",round));
+            System.out.println(String.format("+----------+----------+"));
+            System.out.println(String.format("|  Player  | Computer |"));
+            System.out.println(String.format("+----------+----------+"));  
+            System.out.println(String.format("| ABCDEFGH | ABCDEFGH |"));          
 
             //String printout = "";
             Position coordinates;
             for (int row = 1; row <= 8; row++){
-                System.out.print(String.format("%s",row));
+                System.out.print(String.format("%s ",row));
                 for (Letter column : Letter.values()){                    
                     coordinates = parsePosition(String.format("%s%s",column,row));
                     if (GameController.checkIsHit(myFleet, coordinates)){                         
@@ -82,7 +82,7 @@ public class Main {
                         System.out.print(colorize("~",BLUE_TEXT())); //empty
                     }
                 }
-                System.out.print(String.format("%s",row));
+                System.out.print(String.format(" %s ",row));
                 for (Letter column : Letter.values()){                    
                     coordinates = parsePosition(String.format("%s%s",column,row));
                     if (playerShotsHistory.contains(coordinates)){  
@@ -95,12 +95,13 @@ public class Main {
                         System.out.print(colorize(" ",BLUE_TEXT())); //not checked
                     }
                 }
-                System.out.println(String.format("%s",row));                
+                System.out.println(String.format(" %s",row));                
             }
-            System.out.println(String.format("|ABCDEFGH|ABCDEFGH|"));
-            System.out.println(String.format("+--------+--------+"));  
+            System.out.println(String.format("| ABCDEFGH | ABCDEFGH |"));
+            System.out.println(String.format("+ -------- + -------- +"));  
 
-            System.out.print(colorize("Player, it's your turn. Enter coordinates for your shot: ", YELLOW_TEXT()));
+            System.out.println("Player, it's your turn.");
+            System.out.print(colorize("Enter coordinates for your shot: ", YELLOW_TEXT()));
 
             Position position = parsePosition(scanner.next());
             playerShotsHistory.add(position);
@@ -179,7 +180,7 @@ public class Main {
             System.out.println("");
             System.out.println(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
             for (int i = 1; i <= ship.getSize(); i++) {
-                System.out.println(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
+                System.out.println(colorize(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()), YELLOW_TEXT()));
 
                 String positionInput = scanner.next();
                 ship.addPosition(positionInput);
