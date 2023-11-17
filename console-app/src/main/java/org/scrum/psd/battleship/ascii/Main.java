@@ -108,7 +108,7 @@ public class Main {
             System.out.println(String.format("| A B C D E F G H | A B C D E F G H |"));
             System.out.println(String.format("+-----------------+-----------------+"));  
 
-            System.out.println(String.format("DEBUG: playersHit %s computersHit %s",playerHits,computerHits));  
+            //System.out.println(String.format("DEBUG: playersHit %s computersHit %s",playerHits,computerHits));  
 
             System.out.println("Player, it's your turn.");
             System.out.print(colorize("Enter coordinates for your shot: ", YELLOW_TEXT()));
@@ -138,6 +138,13 @@ public class Main {
             telemetry.trackEvent("Player_ShootPosition", "Position", position.toString(), "IsHit", Boolean.valueOf(isHit).toString());
 
             position = getRandomPosition();
+
+            /*
+            do {
+                position = getRandomPosition();
+            } while (computerShotsHistory.contains(position));
+            */
+
             computerShotsHistory.add(position);
             isHit = GameController.checkIsHit(myFleet, position);
             System.out.println("");
