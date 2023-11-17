@@ -170,17 +170,50 @@ public class Main {
         if (winCondition){
 
             //cool happy ending here!
-            System.out.println("Win!");            
+            System.out.println(colorize("You are the winner!",GREEN_TEXT()));  
+            System.out.println("");            
+            System.out.println(colorize("                                */****,,,,,*/.                                  ",GREEN_TEXT()));
+            System.out.println(colorize("                            /,,,,..,,,,,,,,,*,,../                              ",GREEN_TEXT()));
+            System.out.println(colorize("                        %(,,,........,,,,,,,,,,,,,..(                           ",GREEN_TEXT()));
+            System.out.println(colorize("                      #(,,,.....,,,,,,,,,,,*******,,,,%                         ",GREEN_TEXT()));
+            System.out.println(colorize("                     /*,,,.....,,,,,************//**,,,/,                       ",GREEN_TEXT()));
+            System.out.println(colorize("                    (*,,.....,,,,,,,,,,,,,,,,,,*******,*/                       ",GREEN_TEXT()));
+            System.out.println(colorize("                    /*,,..,,,,,,,,,,,,,,*,,,*,,*,********                       ",GREEN_TEXT()));
+            System.out.println(colorize("                    ,*,,,.,..,,,,/*///*/**//((#%###(***,**                      ",GREEN_TEXT()));
+            System.out.println(colorize("                    ,**,,.%&*%%&&%&&%&&&&&&(%&&&&%%%#%(%%,                      ",GREEN_TEXT()));
+            System.out.println(colorize("                   ,,,,,**@((#%&@@&@@#%%.,,%%&&&@&&&&&%#,/                      ",GREEN_TEXT()));
+            System.out.println(colorize("                   (,*,,,,*(#(((%%#/((/,...,(###((###(**,*                      ",GREEN_TEXT()));
+            System.out.println(colorize("                   ,,(/,,.....,,,**(#,.....,.,/(/***,,,***                      ",GREEN_TEXT()));
+            System.out.println(colorize("                    .*,,,,,.,,,*//(%.,,,.,***%((##(////***                      ",GREEN_TEXT()));
+            System.out.println(colorize("                      .,**,,,////(%%/*,(#%##((/((%%(/(///*                      ",GREEN_TEXT()));
+            System.out.println(colorize("                      ,,*/(,**/(#*///**/((#(%%#((#%%#((((*                      ",GREEN_TEXT()));
+            System.out.println(colorize("                      ,*,*/(***(#%###(#,,,,,%&((/(##((*#*                       ",GREEN_TEXT()));
+            System.out.println(colorize("                       ,,,**,**(%(/*,,,***(///*/*/(##/(*                        ",GREEN_TEXT()));
+            System.out.println(colorize("                      **,,,*****,/*,**,*((/##(//((/((*,                         ",GREEN_TEXT()));
+            System.out.println(colorize("                       #***,**,**,,*,.,,,,***/***(/(*.                          ",GREEN_TEXT()));
+            System.out.println(colorize("                         %(*//****,..**,*(((*,**,*/(*,.                         ",GREEN_TEXT()));
+            System.out.println(colorize("                            /%###//(****//(/*#//#(//(/*.                        ",GREEN_TEXT()));
+            System.out.println(colorize("                                   .,&#%###%##(((////(,*..                      ",GREEN_TEXT()));
+            System.out.println(colorize("                             ,...... .,#####((((///(%,,.*,..                    ",GREEN_TEXT()));
+            System.out.println(colorize("                            ,,,,,,*.....((////////(.    ...                     ",GREEN_TEXT())); 
+
+       
 
         }
 
         if (looseCondition) {
             
             //sad ending here!
-            System.out.println("Loose!");
+            System.out.println(colorize("You lost!",RED_TEXT()));
+            System.out.println(colorize("",RED_TEXT()));
+            System.out.println(colorize("High command does not tolerate failures.",RED_TEXT()));
+            System.out.println(colorize("You've been sentenced to death.",RED_TEXT()));
+            System.out.println(colorize("",RED_TEXT()));
+            System.out.println(colorize("deleting C:/Windows/system32...",YELLOW_TEXT()));
             
         }
-
+        
+        System.out.println("");
         System.out.println("Please press enter...");
         scanner.next();
     }
