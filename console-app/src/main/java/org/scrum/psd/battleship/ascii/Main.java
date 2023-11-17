@@ -59,12 +59,12 @@ public class Main {
 
         do {
             round++;
-            System.out.println(String.format("======================="));
-            System.out.println(String.format("         ROUND %s      ",round));
-            System.out.println(String.format("+----------+----------+"));
-            System.out.println(String.format("|  Player  | Computer |"));
-            System.out.println(String.format("+----------+----------+"));  
-            System.out.println(String.format("| ABCDEFGH | ABCDEFGH |"));          
+            System.out.println(String.format("====================================="));
+            System.out.println(String.format("               ROUND %s              ",round));
+            System.out.println(String.format("+-----------------+-----------------+"));
+            System.out.println(String.format("|    Your fleet   |   Enemy fleet   |"));            
+            System.out.println(String.format("+-----------------+-----------------+"));
+            System.out.println(String.format("| A B C D E F G H | A B C D E F G H |"));
 
             //String printout = "";
             Position coordinates;
@@ -74,31 +74,31 @@ public class Main {
                     coordinates = parsePosition(String.format("%s%s",column,row));
                     if (GameController.checkIsHit(myFleet, coordinates)){                         
                         if (computerShotsHistory.contains(coordinates)){
-                            System.out.print(colorize("X",RED_TEXT())); //player's hit
+                            System.out.print(colorize("X ",RED_TEXT())); //player's hit
                         } else {
-                            System.out.print(colorize("O",GREEN_TEXT())); //player's not hit
+                            System.out.print(colorize("O ",GREEN_TEXT())); //player's not hit
                         }
                     } else {
-                        System.out.print(colorize("~",BLUE_TEXT())); //empty
+                        System.out.print(colorize("~ ",BLUE_TEXT())); //empty
                     }
                 }
-                System.out.print(String.format(" %s ",row));
+                System.out.print(String.format("%s ",row));
                 for (Letter column : Letter.values()){                    
                     coordinates = parsePosition(String.format("%s%s",column,row));
                     if (playerShotsHistory.contains(coordinates)){  
                         if (GameController.checkIsHit(enemyFleet, coordinates)){
-                            System.out.print(colorize("X",RED_TEXT())); //computer's hit
+                            System.out.print(colorize("X ",RED_TEXT())); //computer's hit
                         } else {
-                            System.out.print(colorize("~",BLUE_TEXT())); //empty
+                            System.out.print(colorize("~ ",BLUE_TEXT())); //empty
                         }
                     } else {
-                        System.out.print(colorize(" ",BLUE_TEXT())); //not checked
+                        System.out.print(colorize("  ",BLUE_TEXT())); //not checked
                     }
                 }
-                System.out.println(String.format(" %s",row));                
+                System.out.println(String.format("%s",row));                
             }
-            System.out.println(String.format("| ABCDEFGH | ABCDEFGH |"));
-            System.out.println(String.format("+----------+----------+"));  
+            System.out.println(String.format("| A B C D E F G H | A B C D E F G H |"));
+            System.out.println(String.format("+-----------------+-----------------+"));  
 
             System.out.println("Player, it's your turn.");
             System.out.print(colorize("Enter coordinates for your shot: ", YELLOW_TEXT()));
