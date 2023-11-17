@@ -303,9 +303,9 @@ public class Main {
                 enemyFleet.get(1).getPositions().add(new Position(Letter.H, 2));
                 
                 
-                enemyFleet.get(2).getPositions().add(new Position(Letter.A, 1));
+                enemyFleet.get(2).getPositions().add(new Position(Letter.A, 2));
                 enemyFleet.get(2).getPositions().add(new Position(Letter.B, 2));//
-                enemyFleet.get(2).getPositions().add(new Position(Letter.C, 3));
+                enemyFleet.get(2).getPositions().add(new Position(Letter.C, 2));
                 
                 enemyFleet.get(3).getPositions().add(new Position(Letter.E, 6));
                 enemyFleet.get(3).getPositions().add(new Position(Letter.F, 6));
