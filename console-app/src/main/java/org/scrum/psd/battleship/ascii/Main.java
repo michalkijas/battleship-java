@@ -42,6 +42,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         int round = 0;
+        int playerHits = 0;
+        int computerHits = 0;
+        boolean winCondition = false;
+        boolean looseCondition = false;
         List<Position> playerShotsHistory = new ArrayList<>();
         List<Position> computerShotsHistory = new ArrayList<>();         
 
@@ -68,6 +72,8 @@ public class Main {
 
             //String printout = "";
             Position coordinates;
+            computerHits = 0;
+            playerHits = 0;
             for (int row = 1; row <= 8; row++){
                 System.out.print(String.format("%s ",row));
                 for (Letter column : Letter.values()){                    
@@ -75,6 +81,7 @@ public class Main {
                     if (GameController.checkIsHit(myFleet, coordinates)){                         
                         if (computerShotsHistory.contains(coordinates)){
                             System.out.print(colorize("X ",RED_TEXT())); //player's hit
+                            computerHits++;
                         } else {
                             System.out.print(colorize("O ",GREEN_TEXT())); //player's not hit
                         }
@@ -88,6 +95,7 @@ public class Main {
                     if (playerShotsHistory.contains(coordinates)){  
                         if (GameController.checkIsHit(enemyFleet, coordinates)){
                             System.out.print(colorize("X ",RED_TEXT())); //computer's hit
+                            playerHits++;
                         } else {
                             System.out.print(colorize("~ ",BLUE_TEXT())); //empty
                         }
@@ -100,6 +108,8 @@ public class Main {
             System.out.println(String.format("| A B C D E F G H | A B C D E F G H |"));
             System.out.println(String.format("+-----------------+-----------------+"));  
 
+            System.out.println(String.format("DEBUG: playersHit %s computersHit %s",playerHits,computerHits));  
+
             System.out.println("Player, it's your turn.");
             System.out.print(colorize("Enter coordinates for your shot: ", YELLOW_TEXT()));
 
@@ -108,7 +118,7 @@ public class Main {
             boolean isHit = GameController.checkIsHit(enemyFleet, position);            
             if (isHit) {
                 beep();
-
+                playerHits++;
                 /* System.out.println("                \\         .  ./");
                 System.out.println("              \\      .:\" \";'.:..\" \"   /");
                 System.out.println("                  (M^^.^~~:.'\" \").");
@@ -118,6 +128,11 @@ public class Main {
                 System.out.println("                 -\\  \\     /  /-");
                 System.out.println("                   \\  \\   /  /"); */
             }
+
+            if (playerHits == 17){
+                winCondition = true;
+            }
+
 
             System.out.println(isHit ? colorize("Yeah! Nice hit!",RED_TEXT()) : colorize("Miss.",BLUE_TEXT()));
             telemetry.trackEvent("Player_ShootPosition", "Position", position.toString(), "IsHit", Boolean.valueOf(isHit).toString());
@@ -132,7 +147,7 @@ public class Main {
             telemetry.trackEvent("Computer_ShootPosition", "Position", position.toString(), "IsHit", Boolean.valueOf(isHit).toString());
             if (isHit) {
                 beep();
-
+                computerHits++;
                 /* System.out.println("                \\         .  ./");
                 System.out.println("              \\      .:\" \";'.:..\" \"   /");
                 System.out.println("                  (M^^.^~~:.'\" \").");
@@ -143,7 +158,31 @@ public class Main {
                 System.out.println("                   \\  \\   /  /"); */
 
             }
-        } while (true);
+
+            if (computerHits == 17){
+                looseCondition = true;
+            }
+
+
+        } while (!(winCondition || looseCondition));
+
+
+        if (winCondition){
+
+            //cool happy ending here!
+            System.out.println("Win!");            
+
+        }
+
+        if (looseCondition) {
+            
+            //sad ending here!
+            System.out.println("Loose!");
+            
+        }
+
+        System.out.println("Please press enter...");
+        scanner.next();
     }
 
     private static void beep() {
